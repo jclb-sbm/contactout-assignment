@@ -1,12 +1,38 @@
+@mixin setDimension($dimension)
+  width: $dimension 
+  height: $dimension 
+
+@mixin avatar()
+  border-radius: 50%
+  border: solid white 3px
+
 .sidenav
   width: 6rem
   height: 100vh
 
-.sidenav__logo
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  &__logo
+    display: block;
+    margin: 0 auto
+    @include setDimension(50px)
+ 
+  &__icon
+    font-size: 2rem
 
-.sidenav__icon
-  font-size: 2rem
-  
+  &__avatar-container
+    margin-bottom: 10vh
+
+  &__avatar
+    display: block;
+    margin: 0 auto
+    @include avatar()
+    @include setDimension(65px)
+
+.topnav
+  padding: 0 1rem
+
+  &__logo
+    @include setDimension(50px)
+
+  &__avatar
+    @include avatar()
+    @include setDimension(50px)
