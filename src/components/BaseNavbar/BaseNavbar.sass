@@ -7,16 +7,17 @@
   border: solid white 3px
 
 .sidenav
+  float: left
   width: 6rem
   height: 100vh
 
   &__logo
     display: block;
-    margin: 0 auto
+    margin: 1rem auto
     @include setDimension(50px)
  
   &__icon
-    font-size: 2rem
+    font-size: 1.3rem
 
   &__avatar-container
     margin-bottom: 10vh
@@ -27,6 +28,20 @@
     @include avatar()
     @include setDimension(65px)
 
+  &__link
+    margin: 0.5rem
+    border-radius: 10%
+    display: block;
+    padding: 0.5rem 1rem
+
+  &__link--active
+    background: #2196f3
+    
+
+  &__link--inactive
+    background: #455a64
+    opacity: 0.5;
+
 .topnav
   padding: 0 1rem
 
@@ -36,3 +51,10 @@
   &__avatar
     @include avatar()
     @include setDimension(50px)
+
+  &__link
+    display: block;
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 0.55)
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;

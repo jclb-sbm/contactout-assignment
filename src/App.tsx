@@ -1,13 +1,38 @@
 import './App.scss';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
 import BaseNavbar from './components/BaseNavbar';
+import {
+  Home,
+  Lists,
+  Search,
+} from "./pages"
 
 function App() {
   const links = [
     { url: '/search', label: 'Search', icon: 'bi-search' },
-    { url: '/list', label: 'Lists', icon: 'bi-card-list' },
+    { url: '/lists', label: 'Lists', icon: 'bi-card-list' },
   ]
   return (
-    <BaseNavbar links={links}/>
+    <div>
+      <BrowserRouter>
+        <BaseNavbar links={links}/>
+        <Switch>
+          <Route path="/search">
+            <Search />
+          </Route>
+          <Route path="/lists">
+            <Lists />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 

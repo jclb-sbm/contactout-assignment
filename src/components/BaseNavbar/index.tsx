@@ -3,7 +3,9 @@ import {
   Nav,
   Navbar,
 } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
+import { useLocation } from 'react-router-dom'
 
 function Avatar(props: any) {
   return (
@@ -32,18 +34,19 @@ function TopNavbar(props: any) {
         <NavbarLogo className="topnav__logo"/>
       </Navbar.Brand>
       <div className="d-flex flex-row">
-        <Nav.Link href="/">
+        <Link to="/">
           <Avatar className="topnav__avatar"/>
-        </Nav.Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav"  className="my-2" />
+        </Link>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="my-2" />
       </div>
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
           {props.links.map((link: any) => 
-            <Nav.Link
+            <Link
+              className="topnav__link"
               key={`top-${link.url}${link.label}`}
-              href={link.url}>{link.label}
-            </Nav.Link>
+              to={link.url}>{link.label}
+            </Link>
           )}
         </Nav>
       </Navbar.Collapse>
@@ -52,36 +55,46 @@ function TopNavbar(props: any) {
 }
 
 function SideNavbar(props: any) {
+  const isActiveLink = (url: string) => {
+    return url === props.path 
+      ? 'sidenav__link--active'
+      : 'sidenav__link--inactive'
+  }
+
   return (
     <Nav className="flex-column bg-dark sidenav">
-      <Nav.Link href="/">
+      <Link to="/">
         <NavbarLogo className="sidenav__logo mt-4"/>
-      </Nav.Link>
-      {props.links.map((link: any) => 
-        <Nav.Link 
-          className="text-white text-center mt-2"
-          key={`side-${link.url}${link.label}`} 
-          href={link.url}
+      </Link>
+      {props.links.map(({url, label, icon}: any) => 
+        <Link 
+          className={`text-white text-center mt-2 sidenav__link ${isActiveLink(url)}`}
+          key={`side-${url}${label}`} 
+          to={url}
         >
-          <i className={`bi ${link.icon} sidenav__icon`}></i>
-          <div>{link.label}</div>
-        </Nav.Link>
+          <div className="">
+            <i className={`bi ${icon} sidenav__icon`}></i>
+            <div>{label}</div>
+          </div>
+        </Link>
       )}
       <div className="mt-auto sidenav__avatar-container">
-        <Nav.Link href="/">
+        <Link to="/">
           <Avatar className="sidenav__avatar"/>
-        </Nav.Link>
+        </Link>
       </div>
     </Nav>
   )
 }
 
-
-
 function BaseNavbar(props: any) {
+  const location = useLocation()
   const isLgScreen = useMediaQuery({ query: '(min-width: 786px)' })
-
-  return (isLgScreen ? <SideNavbar links={props.links}/> : <TopNavbar links={props.links}/>)
+  return (
+    isLgScreen 
+      ? <SideNavbar links={props.links} path={location.pathname} /> 
+      : <TopNavbar links={props.links} />
+  )
 }
 
 export default BaseNavbar;
