@@ -37,7 +37,7 @@ function TopNavbar(props: any) {
         <Link to="/">
           <Avatar className="topnav__avatar"/>
         </Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="my-2" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="my-1" />
       </div>
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
