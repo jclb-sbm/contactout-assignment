@@ -23,12 +23,20 @@
 
   &__avatar-container
     margin-bottom: 10vh
+  
+  &__avatar-button
+    background-color: Transparent
+    background-repeat: no-repeat
+    border: none
+    cursor: pointer
+    overflow: hidden
+    outline: none
+    display: block
+    margin: 0 auto
 
   &__avatar
     @extend %avatar
     @include setDimension(65px)
-    display: block
-    margin: 0 auto
 
   &__link
     margin: 0.5rem
@@ -60,3 +68,29 @@
     color: rgba(255, 255, 255, 0.55)
     text-decoration: none;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+.accountmenu
+  &__title
+    background: white
+    &-avatar
+      @extend %avatar
+      @include setDimension(35px)
+    &-text
+      margin-left: 0.5rem
+      font-weight: bold
+  &__content
+    div
+      margin: 0.75rem 1.25rem
+      font-weight: bold
+      font-size: 1rem
+      span:hover
+        border-bottom: solid green 0.15rem
+
+.popover .arrow
+  background: transparent !important;
+  width: 0; 
+  height: 0; 
+  border-right: 7px solid white;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  left: -7px;

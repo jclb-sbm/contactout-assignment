@@ -1,7 +1,10 @@
 import './BaseNavbar.sass';
 import {
+  Button,
   Nav,
   Navbar,
+  OverlayTrigger,
+  Popover,
 } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
@@ -10,9 +13,9 @@ import { useLocation } from 'react-router-dom'
 function Avatar(props: any) {
   return (
     <img
-      className={props.className}
       src="/wozniak.jpg"
       alt="Navbar Avatar"
+      {...props}
     />
   )
 }
@@ -20,9 +23,9 @@ function Avatar(props: any) {
 function NavbarLogo(props: any) {
   return (
     <img
-      className={props.className}
       src="/sample-logo.png"
       alt="Navbar Logo"
+      {...props}
     />
   )
 }
@@ -34,9 +37,7 @@ function TopNavbar(props: any) {
         <NavbarLogo className="topnav__logo"/>
       </Navbar.Brand>
       <div className="d-flex flex-row">
-        <Link to="/">
-          <Avatar className="topnav__avatar"/>
-        </Link>
+        <Avatar className="topnav__avatar"/>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="my-1" />
       </div>
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -53,6 +54,25 @@ function TopNavbar(props: any) {
     </Navbar>
   )
 }
+
+const AccountMenu = (
+  <Popover id="popover-basic">
+    <Popover.Title className="px-2 accountmenu__title">
+      <span className="accountmenu__avatar-container">
+        <Avatar className="accountmenu__title-avatar"/>
+      </span>
+      <span className="accountmenu__title-text">
+        Steve Wozniak
+      </span>
+    </Popover.Title>
+    <Popover.Content className="accountmenu__content p-0">
+      <div><span>Account</span></div>
+      <div><span>Your Exports</span></div>
+      <div><span>Integrations</span></div>
+      <div className="text-primary">Logout</div>
+    </Popover.Content>
+  </Popover>
+);
 
 function SideNavbar(props: any) {
   const isActiveLink = (url: string) => {
@@ -79,9 +99,11 @@ function SideNavbar(props: any) {
         </Link>
       )}
       <div className="mt-auto sidenav__avatar-container">
-        <Link to="/">
+      <OverlayTrigger trigger="click" placement="right-end" overlay={AccountMenu}>
+        <Button bsPrefix="sidenav__avatar-button">
           <Avatar className="sidenav__avatar"/>
-        </Link>
+        </Button>
+      </OverlayTrigger>
       </div>
     </Nav>
   )
