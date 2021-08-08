@@ -1,19 +1,59 @@
 @import "./../../styles/_colors"
 
+.basetable
+  padding-top: 2.5rem
+  &-large
+    padding-right: 4rem
+    padding-left: 10rem
+
+.searchbar__icon
+  color: $primary
+  font-size: 1.3rem
+
 .filter__label 
   margin-bottom: 0.2rem
   font-weight: 500
 
+%onBtnHover
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+
+.utils__btn--outlined
+  color: $primary
+  border: 1px solid $primary
+  margin: 1.75rem 0.75rem 0
+  display: inline-block
+  font-weight: 400
+  line-height: 1
+  background-color: transparent
+  padding: .5rem 0.6rem
+  font-size: 1.1rem
+  border-radius: 0.3rem
+  &:hover 
+    background-color: $primary
+    color: white
+    border: 1px solid transparent
+    @extend %onBtnHover
+    i
+      color: white
+
+.utils__btn-icon
+  font-size: 1.1rem
+  color: $primary
+  @extend %onBtnHover
+
+.utils__btn-text
+  margin-left: 1rem
+
 select
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.3rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: $primary;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  display: block
+  width: 100%
+  padding: 0.375rem 0.3rem
+  font-size: 1rem
+  font-weight: 400
+  line-height: 1.5
+  color: $primary
+  background-color: #fff
+  background-clip: padding-box
+  border: 1px solid #ced4da
+  border-radius: 0.25rem
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
