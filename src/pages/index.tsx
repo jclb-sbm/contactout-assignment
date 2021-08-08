@@ -1,6 +1,4 @@
-function Home() {
-  return <h2>Home</h2>;
-}
+import BaseTable from "../components/BaseTable";
 
 function Search() {
   return <h2>Search</h2>;
@@ -11,7 +9,7 @@ function Lists() {
 }
 
 export {
-  Home,
+  BaseTable,
   Search,
   Lists,
 }

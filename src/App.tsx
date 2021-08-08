@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import BaseNavbar from './components/BaseNavbar';
 import {
-  Home,
+  BaseTable,
   Lists,
   Search,
 } from "./pages"
@@ -28,7 +28,7 @@ function App() {
             <Lists />
           </Route>
           <Route path="/">
-            <Home />
+            <BaseTable />
           </Route>
         </Switch>
       </BrowserRouter>

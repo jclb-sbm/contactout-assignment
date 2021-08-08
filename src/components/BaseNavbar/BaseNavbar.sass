@@ -1,8 +1,10 @@
+@import "./../../styles/_colors"
+
 @mixin setDimension($dimension)
   width: $dimension 
   height: $dimension 
 
-@mixin avatar()
+%avatar
   border-radius: 50%
   border: solid white 3px
 
@@ -23,10 +25,10 @@
     margin-bottom: 10vh
 
   &__avatar
-    display: block;
-    margin: 0 auto
-    @include avatar()
+    @extend %avatar
     @include setDimension(65px)
+    display: block
+    margin: 0 auto
 
   &__link
     margin: 0.5rem
@@ -35,9 +37,8 @@
     padding: 0.5rem 1rem
 
   &__link--active
-    background: #2196f3
+    background: $primary
     
-
   &__link--inactive
     background: #455a64
     opacity: 0.5;
@@ -49,9 +50,9 @@
     @include setDimension(50px)
 
   &__avatar
-    margin-right: 1.5rem
-    @include avatar()
+    @extend %avatar
     @include setDimension(50px)
+    margin-right: 1.5rem
 
   &__link
     display: block;
