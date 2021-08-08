@@ -1,0 +1,53 @@
+@import "./../../../styles/_colors"
+
+@mixin setDimension($dimension)
+  width: $dimension 
+  height: $dimension 
+
+%avatar
+  border-radius: 50%
+  border: solid white 3px
+
+.sidenav
+  float: left
+  width: 6rem
+  height: 100vh
+
+  &__logo
+    display: block;
+    margin: 1rem auto
+    @include setDimension(50px)
+ 
+  &__icon
+    font-size: 1.3rem
+
+  &__avatar-container
+    margin-bottom: 10vh
+
+  &__avatar
+    display: block
+    margin: 0 auto
+    @extend %avatar
+    @include setDimension(65px)
+
+  &__link
+    margin: 0.5rem
+    border-radius: 10%
+    display: block;
+    padding: 0.5rem 1rem
+
+  &__link--active
+    background: $primary
+    
+  &__link--inactive
+    background: #455a64
+    opacity: 0.5;
+
+.popover .arrow
+  background: transparent !important;
+  width: 0; 
+  height: 0; 
+  border-right: 7px solid white;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  left: -7px;

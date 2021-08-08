@@ -1,4 +1,4 @@
-@import "./../../styles/_colors"
+@import "./../../../styles/_colors"
 
 @mixin setDimension($dimension)
   width: $dimension 
@@ -7,6 +7,24 @@
 %avatar
   border-radius: 50%
   border: solid white 3px
+
+.topnav
+  padding: 0 1rem
+
+  &__logo
+    @include setDimension(50px)
+
+  &__avatar
+    @extend %avatar
+    @include setDimension(50px)
+    margin-right: 1.5rem
+
+  &__link
+    display: block;
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 0.55)
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 
 .accountmenu
   &__title
@@ -24,9 +42,7 @@
       font-size: 1rem
       span:active
         border-bottom: solid green 0.15rem
-    &--active
-        border-bottom: solid green 0.15rem
-        
+
 .popover .arrow
   background: transparent !important;
   width: 0; 
